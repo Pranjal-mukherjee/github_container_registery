@@ -1,5 +1,5 @@
 name: Testing github context
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} 
 on:
     push
 jobs:
@@ -7,4 +7,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: context
-              run: ${{toJson(github)}}
+              run: ${{toJson(github.actor)}}

@@ -13,5 +13,5 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: step1
-              run: bash ../../entrypoint.sh
+              run: echo "Echo name"
               shell: bash 

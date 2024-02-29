@@ -1,0 +1,11 @@
+name: creating a open pull request
+run-name: ${{ github.actor }} 
+on:
+    pull_request:
+        types: [opened]
+jobs:
+    hello1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: see github events
+              run: echo '${{toJson(github.event)}}' | jq

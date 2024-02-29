@@ -1,5 +1,5 @@
 name: Testing github context
-run-name: ${{ github.actor }} 
+run-name: ${{ github.actor }} total
 on:
     push
 jobs:

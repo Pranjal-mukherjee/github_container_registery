@@ -1,5 +1,5 @@
 name: creating a open pull request
-run-name: ${{ github.actor }} 
+run-name: ${{ github.actor }} event
 on:
     pull_request:
         types: [opened]

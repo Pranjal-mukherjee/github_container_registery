@@ -2,7 +2,7 @@ name: creating a open pull request
 run-name: ${{ github.actor }} event
 on:
     pull_request:
-        types: [opened]
+        types: [opened,reopened]
 jobs:
     hello1:
         runs-on: ubuntu-latest

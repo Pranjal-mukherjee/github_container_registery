@@ -5,7 +5,7 @@ on:
         paths:
             - '.github/workflows/concurrent.yml'
 concurrency:
-    group: production-development
+    group: ${{ github.ref }}
     cancel-in-progress: true
 jobs:
     job1:

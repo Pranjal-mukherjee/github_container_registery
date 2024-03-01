@@ -9,6 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         concurrency:
             group: prod
+            cancel-in-progress: false
         steps:
             - name: Creating a file
               run: touch File.txt

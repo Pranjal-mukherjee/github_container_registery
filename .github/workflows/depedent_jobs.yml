@@ -26,11 +26,10 @@ jobs:
             - name: Accessing the file created in job1
               run: cat File.txt
     job3:
-        needs: job1
         runs-on: ubuntu-latest
         concurrency:
             group: prod
-            cancel-in-progress: true
+            cancel-in-progress: false
         steps:
             - name: "Job3"
               run: echo "pranjal"

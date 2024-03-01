@@ -7,11 +7,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-            - name: Build and push the image
+            - name: Build and push the image Using secrets and varibles
               run: |
                 docker login --username Pranjal-mukherjee --password ${{secrets.GH_PAT}} ghcr.io 
-                docker build . --tag ghcr.io/pranjal-mukherjee/hello-world-ghcr:latest
-                docker push ghcr.io/pranjal-mukherjee/hello-world-ghcr:latest           
+                docker build . --tag ghcr.io/${{vars.DOCKER_USERNAME}}/hello-world-ghcr:latest
+                docker push ghcr.io/${{vars.DOCKER_USERNAME}}/hello-world-ghcr:latest           
             - name: Setup Node.js environment
               uses: actions/setup-node@v4.0.2
               with:

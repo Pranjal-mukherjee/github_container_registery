@@ -7,6 +7,8 @@ on:
 jobs:
     job1:
         runs-on: ubuntu-latest
+        concurrency:
+            group: prod
         steps:
             - name: Creating a file
               run: touch File.txt
@@ -29,7 +31,7 @@ jobs:
         runs-on: ubuntu-latest
         concurrency:
             group: prod
-            cancel-in-progress: false
+            cancel-in-progress: true
         steps:
             - name: "Job3"
               run: echo "pranjal"

@@ -11,9 +11,6 @@ on:
 jobs:
     run-shell:
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: shell
         steps:
             - name: Checkout Repo
               uses: actions/checkout@v3

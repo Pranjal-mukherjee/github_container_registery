@@ -13,6 +13,6 @@ jobs:
             JOB-LEVEL: Hello
         steps:
             - name: Running env file
-              run: echo "$JOB-LEVEL $NAME today is $WORKFLOW-LEVEL"
+              run: echo $JOB-LEVEL $NAME today is $WORKFLOW-LEVEL
               env:
                 NAME: Pranjal

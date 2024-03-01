@@ -11,6 +11,7 @@ jobs:
             - name: Creating a file
               run: touch File.txt
     job2:
+        needs: job1
         runs-on: ubuntu-latest
         steps:
             - name: Accessing the file created in job1

@@ -19,5 +19,5 @@ jobs:
             - name: Execute Shell Script
               run: |
                 chmod +x main-script.sh
-                ./main-script.sh
+                ./shell/main-script.sh
               

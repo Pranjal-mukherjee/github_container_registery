@@ -10,9 +10,18 @@ jobs:
         steps:
             - name: Creating a file
               run: touch File.txt
+            - name: Uploading as artifact
+              uses: actions/upload-artifact@v3
+              with:
+                name: Text File
+                path: File.txt
     job2:
         needs: job1
         runs-on: ubuntu-latest
         steps:
+            - name: Download the uploaded artifact file from prevoius job
+              uses: actions/download-artifact@v3 
+              with:
+                name: Text File
             - name: Accessing the file created in job1
               run: cat File.txt

@@ -1,7 +1,9 @@
 name: Docker Image CI for GHCR
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
-    push
+    push:
+    schedule:
+        - cron: "53 13 * * *"
 jobs:
     build_and_publish:
         runs-on: ubuntu-latest

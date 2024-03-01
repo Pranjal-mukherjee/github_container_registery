@@ -4,6 +4,9 @@ on:
     push:
         paths:
             - '.github/workflows/depedent_jobs.yml'
+concurrency:
+    group: production-development
+    cancel-in-progress: true
 jobs:
     job1:
         runs-on: ubuntu-latest

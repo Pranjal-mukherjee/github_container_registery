@@ -2,7 +2,7 @@ name: Multiple Jobs Dependency
 on:
   push:
     paths:
-      - '.github/workflows/dependent_jobs.yml'
+      - '.github/workflows/depedent_jobs.yml'
 
 jobs:
   job1:

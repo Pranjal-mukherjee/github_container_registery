@@ -4,9 +4,6 @@ on:
     push:
         paths:
             - '.github/workflows/depedent_jobs.yml'
-concurrency:
-    group: ${{ github.ref }}
-    cancel-in-progress: true
 jobs:
     job1:
         runs-on: ubuntu-latest
@@ -28,3 +25,20 @@ jobs:
                 name: Text File
             - name: Accessing the file created in job1
               run: cat File.txt
+    job3:
+        runs-on: ubuntu-latest
+        concurrency:
+            group: prod
+            cancel-in-progress: true
+        steps:
+            - name: "Job3"
+              run: echo "pranjal"
+    job4:
+        runs-on: ubuntu-latest
+        concurrency:
+            group: prod
+            cancel-in-progress: true
+        steps:
+            - name: "Job4"
+              run: echo "kjlnfwelfkm"
+

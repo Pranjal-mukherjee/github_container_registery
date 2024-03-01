@@ -4,9 +4,6 @@ on:
     push:
         paths:
             - '.github/workflows/concurrent.yml'
-concurrency:
-    group: ${{ github.ref }}
-    cancel-in-progress: true
 jobs:
     job1:
         runs-on: ubuntu-latest

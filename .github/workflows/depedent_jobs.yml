@@ -8,8 +8,11 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Creating a file
-        run: echo "Hello, this is the content" > shared_folder/File.txt
+        - name: Creating shared folder
+          run: mkdir -p shared_folder
+
+        - name: Creating a file
+          run: echo "Hello, this is the content" > shared_folder/File.txt
 
   job2:
     needs: job1

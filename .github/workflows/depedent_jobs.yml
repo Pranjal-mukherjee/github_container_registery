@@ -33,7 +33,7 @@ jobs:
         runs-on: ubuntu-latest
         concurrency:
             group: prod
-            cancel-in-progress: true
+            cancel-in-progress: false
         steps:
             - name: "Job3"
               run: echo "klijmgfwrlikngnfhvkjmb"

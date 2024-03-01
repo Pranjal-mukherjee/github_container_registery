@@ -11,6 +11,8 @@ jobs:
             group: prod
             cancel-in-progress: false
         steps:
+            - name: Echo
+              run: echo "dkhewbfjhregf"
             - name: Creating a file
               run: touch File.txt
             - name: Uploading as artifact

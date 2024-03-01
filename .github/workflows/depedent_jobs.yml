@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} multiple
 on:
     push:
         paths:
-            - 'github/workflows/depedent_jobs.yml'
+            - '.github/workflows/depedent_jobs.yml'
 jobs:
     job1:
         runs-on: ubuntu-latest

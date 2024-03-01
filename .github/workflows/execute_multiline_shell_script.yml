@@ -1,0 +1,27 @@
+name: Multi line shell script file
+on:
+    push:
+        branches: 
+            - main
+            - practise
+    pull_request:
+        types: [opened,reopened,synchronize]
+        paths:
+            - 'shell/**'
+
+jobs:
+    run-shell:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: shell
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+            - name: List Repo files
+              run: ls -ltra
+            - name: Execute Shell Script
+              run: |
+                chmod +x main-script.sh
+                ./main-script.sh
+              

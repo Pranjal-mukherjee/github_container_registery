@@ -1,0 +1,16 @@
+name: Concurrent Workflow
+run-name: ${{ github.actor }} workflow
+on:
+    push:
+        paths:
+            - '.github/workflows/concurrent.yml'
+concurrency:
+    group: production-development
+    cancel-in-progress: true
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Creating a file
+              run: touch File.txt
+            

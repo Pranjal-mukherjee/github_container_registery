@@ -1,18 +1,19 @@
-name: Mutiple Jobs Depedncy
-run-name: ${{ github.actor }} multiple
+name: Multiple Jobs Dependency
 on:
-    push:
-        paths:
-            - '.github/workflows/depedent_jobs.yml'
+  push:
+    paths:
+      - '.github/workflows/dependent_jobs.yml'
+
 jobs:
-    job1:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Creating a file
-              run: touch File.txt
-    job2:
-        needs: job1
-        runs-on: ubuntu-latest
-        steps:
-            - name: Accessing the file created in job1
-              run: cat File.txt
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Creating a file
+        run: echo "Hello, this is the content" > shared_folder/File.txt
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Accessing the file created in job1
+        run: cat shared_folder/File.txt

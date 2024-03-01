@@ -6,8 +6,7 @@ on:
             - practise
     pull_request:
         types: [opened,reopened,synchronize]
-        paths:
-            - 'shell/**'
+      
 
 jobs:
     run-shell:

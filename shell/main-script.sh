@@ -1,5 +1,5 @@
 #!/bin/bash
 echo "File in directory"
-$ls 
+echo $ls 
 echo "Present working directory"
-$pwd
+echo $pwd

@@ -3,9 +3,7 @@ on:
     push:
         branches: 
             - main
-            - practise
     pull_request:
-        types: [opened,reopened,synchronize]
         paths:
             - 'shell/**'
             - '.github/workflows/execute_multiline_shell_script.yml'

@@ -24,7 +24,7 @@ jobs:
                 os: [ubuntu-latest , ubuntu-20.04 , windows-latest]
                 images: [alpine ,  hello-world]
                 exclude:
-                    - images: alpine
+                    - images:  alpine
                       os: window-latest
                 include:
                     - images: amd64/alpine

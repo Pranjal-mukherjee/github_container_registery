@@ -19,6 +19,7 @@ jobs:
               with:
                 name: Text File
                 path: File.txt
+              if: ${{ success() }}
     job2:
         needs: job1
         runs-on: ubuntu-latest

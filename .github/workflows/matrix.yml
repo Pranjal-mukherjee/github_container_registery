@@ -5,11 +5,30 @@ on:
         paths:
             - '.github/workflows/matrix.yml'
 jobs:
-    job1:
+    # job1:
+    #     strategy:
+    #         matrix:
+    #             os: [ubuntu-latest , ubuntu-20.04 , windows-latest]
+    #             images: [alpine ,  mysql]
+    #     runs-on: ${{ matrix.os }}
+    #     steps:
+    #         - name: Echo Docker Details
+    #           run:  docker info
+    #         - name: Run Image on ${{ matrix.os }}
+    #           run: docker run ${{ matrix.images}}
+    job2:
         strategy:
+            fail-fast: false
+            max-parallel: 2
             matrix:
                 os: [ubuntu-latest , ubuntu-20.04 , windows-latest]
-                images: [alpine ,  mysql]
+                images: [alpine ,  hello-world]
+                exclude:
+                    - images: alpine
+                      os: window-latest
+                include:
+                    - images: amd64/alpine
+                      os: ubuntu-20.04
         runs-on: ${{ matrix.os }}
         steps:
             - name: Echo Docker Details

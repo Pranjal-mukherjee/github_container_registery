@@ -1,0 +1,18 @@
+name: Define custom env for single workflow file
+run-name: ${{ github.actor }} varaible
+on:
+    push:
+        paths:
+            - '.github/workflows/custom_env_variable.yml'
+env:
+    WORKFLOW-LEVEL: Monday
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        env:
+            JOB-LEVEL: Hello
+        steps:
+            - name: Running env file
+              run: echo ${{env.JOB-LEVEL}} ${{env.NAME}} today is ${{env.WORKFLOW-LEVEL}}
+              env:
+                NAME: Pranjal

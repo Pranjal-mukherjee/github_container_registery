@@ -1,22 +1,42 @@
-name: Docker Image CI for GHCR
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: Mutiple Jobs Depedncy
+run-name: ${{ github.actor }} multiple
 on:
     push:
         paths:
-            - '.github/workflows/publish_ghcr.yml'
-    schedule:
-        - cron: "53 13 * * *"
-
+            - '.github/workflows/depedent_jobs.yml'
 jobs:
-    build_and_publish:
+    job1:
+        runs-on: ubuntu-latest
+        concurrency:
+            group: prod
+        steps:
+            - name: Echo
+              run: echo "dkhewbfjhregf"
+            - name: Creating a file
+              run: touch File.txt
+            - name: Uploading as artifact
+              uses: actions/upload-artifact@v3
+              with:
+                name: Text File
+                path: File.txt
+    job2:
+        needs: job1
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - name: Build and push the image Using secrets and varibles
-              run: |
-                docker login --username Pranjal-mukherjee --password ${{secrets.GH_PAT}} ghcr.io 
-                docker build . --tag ghcr.io/${{vars.DOCKER_USERNAME}}/hello-world-ghcr:latest
-                docker push ghcr.io/${{vars.DOCKER_USERNAME}}/hello-world-ghcr:latest           
+            - name: Download the uploaded artifact file from prevoius job
+              uses: actions/download-artifact@v3 
+              with:
+                name: Text File
+            - name: Accessing the file created in job1
+              run: cat File.txt
+    job3:
+        runs-on: ubuntu-latest
+        concurrency:
+            group: prod
+            cancel-in-progress: false
+        steps:
+            - name: "Job3"
+              run: echo "klijmgfwrlikngnfhvkjmb"
             - name: Setup Node.js environment
               uses: actions/setup-node@v4.0.2
               with:
@@ -40,4 +60,12 @@ jobs:
                   cache: # optional
                   # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
                   cache-dependency-path: # optional
-                        
+    # job4:
+    #     runs-on: ubuntu-latest
+    #     concurrency:
+    #         group: prod
+    #         cancel-in-progress: true
+    #     steps:
+    #         - name: "Job4"
+    #           run: echo "kjlnfwelfkm"
+

@@ -1,7 +1,10 @@
 name: Testing github context
 run-name: ${{ github.actor }} total
 on:
-    push
+    push:
+        paths:
+            - '.github/workflows/github_context.yml'
+    
 jobs:
     context:
         runs-on: ubuntu-latest

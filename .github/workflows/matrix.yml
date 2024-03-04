@@ -1,0 +1,18 @@
+name: Matrix Jobs
+run-name: ${{ github.actor }} is running matrix jobs
+on:
+    push:
+        paths:
+            - '.github/workflows/matrix.yml'
+jobs:
+    job1:
+        strategy:
+            matrix:
+                os: [ubuntu-latest , ubuntu-20.04 , windows-latest]
+                images: [alpine ,  ghcr.io/pranjal-mukherjee/hello-world-ghcr:latest ]
+        runs-on: ${{ matrix.os }}
+        steps:
+            - name: Echo Docker Details
+              run:  docker info
+            - name: Run Image on ${{ matrix.os }}
+              run: docker run ${{ matrix.images}}

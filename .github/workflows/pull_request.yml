@@ -1,4 +1,4 @@
-name: creating a open pull request
+name: If Expression implemented
 run-name: ${{ github.actor }} event
 on:
     pull_request:
@@ -6,6 +6,7 @@ on:
             - '.github/workflows/pull_request.yml'
 jobs:
     hello1:
+        if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
             - name: see github events
